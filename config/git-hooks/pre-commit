@@ -1,0 +1,82 @@
+#!/bin/sh
+
+set -e
+
+bold=`tput bold`
+underline=`tput smul`
+attention=`tput setab 1`
+normal=`tput sgr0`
+
+npm run copy-git-hooks
+
+separator="\n\n\n\n"
+
+service=template-service-test
+servicename=template-service
+
+dbname=TemplateService
+
+error () {
+	cleanup
+
+	printf "${separator}${attention}Attention! An error was encountered!${normal}\n"
+}
+
+cleanup () {
+	printf "${separator}${bold}Removing test containers${normal}\n"
+	docker rm -fv rabbitmq-test || true
+	docker rm -fv postgres-test || true
+	docker rm -fv $service || true
+}
+
+runs=(
+	"jshint -- ./"
+	"eslint -- --reset --eslintrc ./"
+	"jscs -- ./"
+	"nsp -- audit-package"
+	"test"
+)
+
+cleanup
+
+trap error ERR
+
+printf "${separator}${bold}Building docker image${normal}\n"
+docker build -t $service .
+
+printf "${separator}${bold}Starting RabbitMQ${normal}\n"
+docker run -d --name rabbitmq-test rabbitmq
+
+printf "${separator}${bold}Starting PostgreSQL${normal}\n"
+docker run -d --name postgres-test \
+	-e POSTGRES_PASSWORD=password \
+	postgres
+
+printf "Waiting for PostgreSQL to boot"
+until docker exec postgres-test psql -U postgres -c '\list' &> /dev/null
+do
+	sleep 1
+	printf "."
+done
+
+printf "${separator}${bold}Starting $servicename${normal}\n"
+docker run -d --name $service \
+    --link rabbitmq-test:rabbitmq \
+    --link postgres-test:postgres \
+    -e NODE_ENV=development \
+    $service \
+
+printf "${separator}${bold}Creating the database${normal}\n"
+docker exec postgres-test psql -U postgres -c 'CREATE DATABASE "'$dbname'"'
+
+printf "${separator}${bold}Migrating the database${normal}\n"
+docker exec $service npm run sequelize -- db:migrate
+
+for i in "${runs[@]}"
+do :
+	printf "${separator}${underline}${bold}npm run $i${normal}"
+
+	docker exec $service npm run $i
+done
+
+cleanup

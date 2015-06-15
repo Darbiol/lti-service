@@ -1,0 +1,17 @@
+{
+  "database": {
+    "host": "postgres",
+    "port": 5432,
+    "database": "TemplateService",
+    "username": "postgres",
+    "password": "password",
+    "dialect": "postgres"
+  },
+
+  "rabbitmq": {
+    "server": "rabbitmq",
+    "port": 5672,
+    "user": "guest",
+    "pass": "guest"
+  }
+}

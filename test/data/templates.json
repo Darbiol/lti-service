@@ -1,0 +1,44 @@
+[
+  {
+    "id" : "7ea16719-c226-4d51-907c-ebb53b1906a6",
+    "templateId" : 100,
+    "name" : "edivate template",
+    "description" : "this is a description",
+    "content" : "this is a template content"
+  },
+  {
+    "id" : "f620507e-34b1-4a16-bb6d-98f3f4d8eb4f",
+    "templateId" : 101,
+    "name" : "obs template",
+    "description" : "this is a description",
+    "content" : "this is a template content"
+  },
+  {
+    "id" : "2b38548f-bd16-4992-b443-ebd45ce5161f",
+    "templateId" : 102,
+    "name" : "eskrima template",
+    "description" : "this is a description",
+    "content" : "this is a template content"
+  },
+  {
+    "id" : "8405d22a-7adf-40cb-9b54-9fd72fbf4621",
+    "templateId" : 103,
+    "name" : "edivate template",
+    "description" : "this is a description",
+    "content" : "this is a template content"
+  },
+  {
+    "id": "beb429b3-5886-4d45-b21b-d9ca25c68f76",
+    "templateId" : 104,
+    "name": "this is real templa",
+    "description": "this is a real template kewl",
+    "content": "<h1>Company Name</h1> <p>{{=it.date}}</p> <br> <p>Greetings {{=it.to}}</p> <br>     <p>Lorem adip epturi tenetur voluptatums placeat incidunt consectetur libm non. Sunt veritatis.</p> <br> <p>Best regards,</p> <p>{{=it.from}}</p> <p>{{=it.position}}</p>"
+  },
+  {
+    "id": "f164c08d-507a-44ae-80e3-7b6af336886c",
+    "templateId" : 105,
+    "name": "this is real templa",
+    "description": "this is a real template kewl with no undefined fields",
+    "content": "<h1>Company Name</h1> <br> <p>Greetings {{=it.to}}</p> <br>     <p>Lorem adip epturi tenetur voluptatums placeat incidunt consectetur libm non. Sunt veritatis.</p> <br> <p>Best regards,</p> <p>{{=it.from}}</p>"
+  }
+]
