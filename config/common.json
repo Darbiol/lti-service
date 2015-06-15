@@ -1,15 +1,7 @@
 {
-  "database": {
-    "host": "postgres",
-    "port": 5432,
-    "database": "TemplateService",
-    "username": "postgres",
-    "password": "password",
-    "dialect": "postgres"
-  },
 
   "rabbitmq": {
-    "server": "rabbitmq",
+    "server": "boot2docker",
     "port": 5672,
     "user": "guest",
     "pass": "guest"

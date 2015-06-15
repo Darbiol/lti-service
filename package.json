@@ -25,17 +25,19 @@
   },
   "dependencies": {
     "async": "^0.9.0",
+    "dot": "~1.0.3",
+    "ims-lti": "^2.1.5",
     "inflection": "^1.7.0",
     "lapin": "^3.0.0",
     "lodash": "~3.8.0",
     "path": "^0.11.14",
     "pg": "^4.3.0",
+    "rabbus": "^0.3.0",
     "sequelize": "2.0.5",
     "sequelize-cli": "^1.7.0",
+    "util": "^0.10.3",
     "wascally": "^0.2.4",
-    "zero-config": "^6.0.2",
-    "dot": "~1.0.3",
-    "rabbus": "^0.3.0"
+    "zero-config": "^6.0.2"
   },
   "devDependencies": {
     "del": "^1.1.1",
