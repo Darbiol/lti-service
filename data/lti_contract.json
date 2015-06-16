@@ -1,0 +1,30 @@
+[
+	{
+		"id" : 1,
+		"consumer_key" : "123-45d87.xph.edu",
+		"secret" : "keyboardCat",
+		"description" : "This key is for the XPH district",
+		"created" : "May 6, 2010"
+	},
+	{
+		"id" : 2,
+		"consumer_key" : "585-90f32.mfs.info",
+		"secret" : "secretSecret",
+		"description" : "Your face is a Description",
+		"created" : "July 19, 1998"
+	},
+	{
+		"id" : 3,
+		"consumer_key" : "427-00h75.mcs.gov",
+		"secret" : "IgotASecret",
+		"description" : "Godzilla!!!!!!!!",
+		"created" : "March 8, 2002"
+	},
+	{
+		"id" : 4,
+		"consumer_key" : "010-10te10.ten",
+		"secret" : "ten ten ten teeeeeen",
+		"description" : "ten",
+		"created" : "October 10, 2010"
+	}
+]

@@ -19,7 +19,6 @@ module.exports = function ( userSettings ) {
 	}
 
 	var options    = util._extend({}, userSettings);
-	console.log( options );
 	//var nonceStore = getNonceStore(options.store);
 	if (!options.credentials) {
 		options.credentials = function (key, callback) {
@@ -31,9 +30,10 @@ module.exports = function ( userSettings ) {
 	// Detect if there is a payload that would indicate an LTI launch. If it is
 	// present then verify the request, storing the request parameters into the
 	// session if valid, and throwing an error if not.
-	console.log( req );
-	if ( req.method === 'POST' && isObject(req.body) && req.body.lti_message_type === 'basic-lti-launch-request' ) {
+	if ( (req.method).toLowerCase() === 'post' && isObject(req.body) && req.body.lti_message_type === 'basic-lti-launch-request' ) {
+		console.log( options.credentials )
 		return options.credentials.call( req, req.body.oauth_consumer_key, function (err, key, secret) {
+			console.log( err )
 		if ( err ) {
 			return next( err );
 		}
@@ -44,7 +44,6 @@ module.exports = function ( userSettings ) {
 		if (err) {
 			return next(err);
 		}
-
 		req.session.lti = {
 				key:    key,
 				secret: secret,
